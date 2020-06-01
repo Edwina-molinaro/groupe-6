@@ -8,6 +8,8 @@ $sqlInsertProducts="SELECT * FROM produits";
 $reqInsertProducts=$db->prepare($sqlInsertProducts);
 $reqInsertProducts->execute();
 
+
+
 ?>
 
 
@@ -55,7 +57,7 @@ $reqInsertProducts->execute();
         </div>
       </div>
       <a href="modify-products.php?id=<?php echo $produits->idproduits; ?>"><button class="btn btn-warning">Modify</button></a>
-      <a href="delete-products.php"><button class="btn btn-danger">Delete</button></a>
+      <a href="delete-products_base.php?id=<?php echo $produits->idproduits; ?>"><button class="btn btn-danger">Delete</button></a>
       <?php 
                 }
                 ?>
