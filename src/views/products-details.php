@@ -10,9 +10,10 @@ if(isset($_GET['id'])){
     $id = '';
 }
 
-$sqlInsertProducts="SELECT * FROM produits";
-$reqInsertProducts=$db->prepare($sqlInsertProducts);
-$reqInsertProducts->execute();
+$sqlSelectProducts="SELECT * FROM produits WHERE idproduits = :ids";
+$reqSelectProducts=$db->prepare($sqlSelectProducts);
+$reqSelectProducts->bindParam(':ids', $id);
+$reqSelectProducts->execute();
 
 ?>
 
@@ -37,7 +38,12 @@ $reqInsertProducts->execute();
         $produits = $reqSelectProducts->fetchObject();           
     ?>
     <img src="..." class="img-fluid" alt="Responsive image">
-    <p> Description </p>
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        <?php echo $produits->nom ?></br>
+        <?php echo $produits->prix ?></br>
+        <?php echo $produits->quantite ?></br>
+        <?php echo $produits->description ?>
     <div class="d-flex flex-wrap btn-gap">
       <a href="panier.php" class="btn btn-info">Acheter</a>
       <a href="products.php" class="btn btn-success">retour</a>
