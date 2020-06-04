@@ -52,7 +52,7 @@ $reqInsertProducts->execute();
         <img src="../../public/img/<?php echo $produits->photo; ?>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><?php echo $produits->nom; ?></h5>
-          <a href="products-details.php" class="btn btn-warning">See more</a>
+          <a href="products-details.php?id=<?php echo $produits->idproduits; ?>" class="btn btn-warning">See more</a>
           <a href="#" class="btn btn-success">Add to cart</a>
         </div>
       </div>

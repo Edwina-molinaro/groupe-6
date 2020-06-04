@@ -1,3 +1,22 @@
+<?php
+require '../config/config.php';
+require '../models/connect.php';
+
+$db=connection();
+
+if(isset($_GET['id'])){
+    $id = htmlspecialchars(trim($_GET['id']));
+} else {
+    $id = '';
+}
+
+$sqlInsertProducts="SELECT * FROM produits";
+$reqInsertProducts=$db->prepare($sqlInsertProducts);
+$reqInsertProducts->execute();
+
+?>
+
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -14,6 +33,9 @@
   </header>
 
   <section class="d-flex justify-content-center align-items-center flex-column card-products">
+    <?php 
+        $produits = $reqSelectProducts->fetchObject();           
+    ?>
     <img src="..." class="img-fluid" alt="Responsive image">
     <p> Description </p>
     <div class="d-flex flex-wrap btn-gap">
